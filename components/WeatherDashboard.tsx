@@ -18,12 +18,10 @@ export default function WeatherDashboard() {
     if (isLoading) return <div>Loading</div>
 
     return (
-        <div>
-            <main className="m-auto max-w-sm grid gap-6">
-                {data.map((weather) => {
-                    return <WeatherCard key={weather.id} data={weather} />
-                })}
-            </main>
+        <div className="m-auto max-w-3xl grid md:grid-cols-2 gap-6">
+            {data.map((weather) => {
+                return <WeatherCard key={weather.id} data={weather} />
+            })}
         </div>
     )
 }

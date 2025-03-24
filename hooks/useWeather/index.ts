@@ -1,7 +1,6 @@
 import { Location } from '@/shared/interfaces/weather.interface'
 import { useQueries } from '@tanstack/react-query'
 import { WeatherData } from './weather.interface'
-import { useState } from 'react'
 
 const REFRESH_INTERVAL = 10 * 60 * 1000
 const API_KEY = process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY
@@ -13,7 +12,6 @@ const fetchUrl = async (url: string) => {
 }
 
 export function useWeather(locations: Location[]) {
-    const [lastUpdatedAt, setLastUpdatedAt] = useState<Date>()
     if (!API_KEY) {
         throw new Error('OpenWeatherMap API key not found.')
     }

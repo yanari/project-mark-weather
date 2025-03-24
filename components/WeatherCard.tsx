@@ -1,7 +1,7 @@
 import { getColorByTemperature } from '@/hooks/useWeather'
 import { WeatherData } from '@/hooks/useWeather/weather.interface'
 import { formatDistance } from 'date-fns'
-import { Droplets, Gauge, RefreshCw } from 'lucide-react'
+import { Droplets, Gauge } from 'lucide-react'
 import { ReactNode } from 'react'
 
 interface WeatherCardProps {
@@ -20,7 +20,7 @@ export default function WeatherCard({ data }: WeatherCardProps) {
     const color = getColorByTemperature(temperature)
 
     return (
-        <div className="bg-white rounded-lg shadow-md">
+        <div className="bg-white rounded-lg shadow-md overflow-hidden">
             <div className="mb-3 py-2 px-4">
                 <div className="flex justify-between items-center">
                     <div>
@@ -56,12 +56,8 @@ export default function WeatherCard({ data }: WeatherCardProps) {
                 </div>
             </div>
 
-            <div className="bg-slate-100 flex justify-between py-2 px-4 text-sm text-slate-700">
+            <div className="bg-slate-100 py-2 px-4 text-sm text-slate-700">
                 <span className=''>Last updated: {updatedAt}</span>
-                <button className="flex gap-1 items-center">
-                    <RefreshCw size={16} />
-                    Refresh
-                </button>
             </div>
         </div>
     )

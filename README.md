@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Weather App - FrontEnd Challenge ProjectMark
 
-## Getting Started
+## 📌 Overview
 
-First, run the development server:
+This project is a weather application built for the **FrontEnd Challenge ProjectMark**. It displays real-time weather conditions for three cities: **Joinville (Brazil), San Francisco (USA), and Urubici (Brazil)**. The data is fetched from the **OpenWeatherMap API** and updates automatically every **10 minutes**.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ✨ Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Current Temperature** (in Celsius) with color-coded indicators:
+  - **Blue**: 5°C or below
+  - **Orange**: Between 5°C and 25°C
+  - **Red**: Above 25°C
+- **Humidity** (percentage)
+- **Pressure**
+- **Automatic data updates every 10 minutes**
+- Built with **semantic HTML** and modern CSS (Tailwind CSS)
+- Developed using **Next.js** with **React Query** for data fetching
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠 Prerequisites
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+To run this project, ensure you have the following installed:
 
-## Learn More
+- [Node.js](https://nodejs.org/) (LTS version recommended)
+- [Git](https://git-scm.com/)
+- API Key from [OpenWeatherMap](https://openweathermap.org/)
 
-To learn more about Next.js, take a look at the following resources:
+## 🚀 Installation & Setup
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/yanari/project-mark-weather.git
+   cd project-mark-weather
+   ```
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+3. **Create an **``** file** and add your OpenWeatherMap API key:
+   ```plaintext
+   NEXT_PUBLIC_OPENWEATHER_API_KEY=your_api_key_here
+   ```
+4. **Run the application:**
+   ```bash
+   npm run dev
+   ```
+5. Open your browser and visit `http://localhost:3000`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🧑‍💻 Technologies Used
 
-## Deploy on Vercel
+- **Frontend Framework:** Next.js (React)
+- **Styling:** Tailwind CSS
+- **Icons:** Lucide React
+- **Data Fetching:** React Query
+- **Date Formatting:** date-fns
+- **Linting:** ESLint
+- **API:** OpenWeatherMap
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🔍 Code Quality & Best Practices
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- ✅ **Semantic HTML** for accessibility and SEO
+- ✅ **Component-based architecture** for reusability
+- ✅ **Consistent styling** using Tailwind CSS
+- ✅ **Usability-focused UI** with responsive design
+- ✅ **Easy maintenance** with modular and well-documented code
+- ✅ **Linting and formatting enforced with ESLint**
+
+
+## 📝 License
+
+This project is licensed under the MIT License.
+
+---
+
+👩‍💻 **Developed by Marcelle Yanari**
+
