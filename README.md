@@ -35,7 +35,7 @@ To run this project, ensure you have the following installed:
    ```bash
    npm install
    ```
-3. **Create an **``** file** and add your OpenWeatherMap API key:
+3. **Create an **`.env`** file** and add your OpenWeatherMap API key:
    ```plaintext
    NEXT_PUBLIC_OPENWEATHER_API_KEY=your_api_key_here
    ```
