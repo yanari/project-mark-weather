@@ -1,28 +1,20 @@
 'use client'
 
-import { useQuery } from "@tanstack/react-query";
+import { useWeatherFetch } from '@/hooks/useWeather'
 
-const OPENWEATHER_API_KEY = '';
+const location = {
+    city: 'Joinville',
+    country: 'BR',
+}
 
-export default function CityTemperature() {
-    const { isPending, error, data } = useQuery({
-            queryKey: ['londonWeather'],
-            queryFn: () =>
-                fetch(
-                    `http://api.openweathermap.org/geo/1.0/direct?q=Joinville,SC,BR&limit=5&appid=${OPENWEATHER_API_KEY}`
-                )
-                    .then((res) => res.json())
-        });
+export default function WeatherDashboard() {
+    const { data, error } = useWeatherFetch(location)
 
-        console.log('data', data)
-    
-        if (isPending) return 'Loading...';
-    
-        if (error) return 'An error has occurred: ' + error.message;
+    if (error) return <div>Error</div>
 
     return (
         <div>
-            London
+            <pre>{JSON.stringify(data, null, 4)}</pre>
         </div>
     )
 }
