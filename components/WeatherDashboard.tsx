@@ -1,6 +1,6 @@
 'use client'
 
-import { useWeatherFetch } from '@/hooks/useWeather'
+import { useWeather } from '@/hooks/useWeather'
 import WeatherCard from './WeatherCard'
 import { Location } from '@/shared/interfaces/weather.interface'
 
@@ -11,7 +11,7 @@ const LOCATIONS: Location[] = [
 ]
 
 export default function WeatherDashboard() {
-    const { data, error, isLoading } = useWeatherFetch(LOCATIONS)
+    const { data, error, isLoading } = useWeather(LOCATIONS)
 
     if (error) return <div>Error</div>
 
@@ -19,7 +19,7 @@ export default function WeatherDashboard() {
 
     return (
         <div>
-            <main className="m-auto max-w-sm grid gap-3">
+            <main className="m-auto max-w-sm grid gap-6">
                 {data.map((weather) => {
                     return <WeatherCard key={weather.id} data={weather} />
                 })}

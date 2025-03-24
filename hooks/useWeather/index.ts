@@ -1,5 +1,7 @@
-import { Location, WeatherData } from '@/shared/interfaces/weather.interface'
+import { Location } from '@/shared/interfaces/weather.interface'
 import { useQueries } from '@tanstack/react-query'
+import { WeatherData } from './weather.interface'
+import { useState } from 'react'
 
 const REFRESH_INTERVAL = 10 * 60 * 1000
 const API_KEY = process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY
@@ -10,7 +12,8 @@ const fetchUrl = async (url: string) => {
     return response.json()
 }
 
-export function useWeatherFetch(locations: Location[]) {
+export function useWeather(locations: Location[]) {
+    const [lastUpdatedAt, setLastUpdatedAt] = useState<Date>()
     if (!API_KEY) {
         throw new Error('OpenWeatherMap API key not found.')
     }
@@ -28,7 +31,13 @@ export function useWeatherFetch(locations: Location[]) {
         }),
         combine: (results) => {
             return {
-                data: results.map((result) => result.data as WeatherData),
+                data: results.map((result) => {
+                    const data = result.data as WeatherData
+                    return {
+                        ...data,
+                        lastUpdatedAt: new Date(result.dataUpdatedAt),
+                    }
+                }),
                 isPending: results.some((result) => result.isPending),
                 error: results.some((result) => result.error),
             }
@@ -42,7 +51,7 @@ export function useWeatherFetch(locations: Location[]) {
     }
 }
 
-function getColorByTemperature(temperature: number) {
+export function getColorByTemperature(temperature: number) {
     // Temperature color coding:
     // 5°C or below → Blue
     // Above 5°C and up to 25°C → Orange
