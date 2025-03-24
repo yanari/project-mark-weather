@@ -36,11 +36,11 @@ export default function WeatherCard({ data }: WeatherCardProps) {
                         />
                     </div>
                 </div>
-                <div className="flex items-end mb-4 justify-between">
+                <div className="flex items-start mb-4 justify-between">
                     <span className={`text-5xl font-bold ${color}`}>
                         {temperature}°C
                     </span>
-                    <span className="text-gray-500 ml-2 pb-1 capitalize">{description}</span>
+                    <span className="text-gray-500 ml-2 pb-1 capitalize text-sm">{description}</span>
                 </div>
                 <div className="grid grid-cols-2 gap-3">
                     <WeatherDetail
