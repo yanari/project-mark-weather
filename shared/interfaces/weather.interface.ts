@@ -12,6 +12,7 @@ export interface Main {
 }
 
 export interface WeatherData {
+    id: string
     weather: Weather[]
     main: Main
     name: string
