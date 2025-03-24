@@ -1,6 +1,6 @@
 import { getColorByTemperature } from '@/hooks/useWeather'
 import { WeatherData } from '@/hooks/useWeather/weather.interface'
-import { formatDistance } from 'date-fns'
+import { format, formatDistanceToNow } from 'date-fns'
 import { Droplets, Gauge } from 'lucide-react'
 import { ReactNode } from 'react'
 
@@ -13,9 +13,12 @@ export default function WeatherCard({ data }: WeatherCardProps) {
     const { icon, description } = weather[0]
     const temperature = Math.floor(main.temp)
     const country = sys.country
-    console.log(lastUpdatedAt)
 
-    const updatedAt = formatDistance(lastUpdatedAt, Date.now());
+    const updatedAtFromNow = formatDistanceToNow(lastUpdatedAt, {
+        addSuffix: true,
+    })
+
+    const updatedAt = format(lastUpdatedAt, 'HH:mm')
 
     const color = getColorByTemperature(temperature)
 
@@ -30,7 +33,7 @@ export default function WeatherCard({ data }: WeatherCardProps) {
                     </div>
                     <div>
                         <img
-                            className='w-16 h-16'
+                            className="w-16 h-16"
                             src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
                             alt={description}
                         />
@@ -38,26 +41,32 @@ export default function WeatherCard({ data }: WeatherCardProps) {
                 </div>
                 <div className="flex items-start mb-4 justify-between">
                     <span className={`text-5xl font-bold ${color}`}>
-                        {temperature}°C
+                        {temperature}
+                        <span className="text-3xl">°C</span>
                     </span>
-                    <span className="text-gray-500 ml-2 pb-1 capitalize text-sm">{description}</span>
+                    <span className="text-gray-500 ml-2 pb-1 capitalize text-sm">
+                        {description}
+                    </span>
                 </div>
                 <div className="grid grid-cols-2 gap-3">
                     <WeatherDetail
                         name="Humidity"
                         value={`${main.humidity}%`}
-                        icon={<Gauge />}
-                    />
+                        icon={<Droplets />}
+                        />
                     <WeatherDetail
                         name="Pressure"
                         value={`${main.pressure} hPa`}
-                        icon={<Droplets />}
+                        icon={<Gauge />}
                     />
                 </div>
             </div>
 
             <div className="bg-slate-100 py-2 px-4 text-sm text-slate-700">
-                <span className=''>Last updated: {updatedAt}</span>
+                <span className="flex justify-between items-center">
+                    Last updated: {updatedAtFromNow}
+                    <span className="text-xs">{updatedAt}</span>
+                </span>
             </div>
         </div>
     )
@@ -72,9 +81,7 @@ interface WeatherDetailProps {
 function WeatherDetail({ name, value, icon }: WeatherDetailProps) {
     return (
         <div className="flex items-center bg-slate-100 rounded-lg px-4 py-1">
-            <span className="text-slate-400 mr-4">
-                {icon}
-            </span>
+            <span className="text-slate-400 mr-4">{icon}</span>
             <div>
                 <p className="text-gray-500 text-sm">{name}</p>
                 <p className="font-semibold">{value}</p>

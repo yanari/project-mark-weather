@@ -9,7 +9,7 @@ export default function Home() {
                 </h1>
                 <p>Real-time weather conditions for selected cities</p>
             </header>
-            <main>
+            <main className="flex-1">
                 <WeatherDashboard />
             </main>
             <footer className="mt-10 md:mt-auto text-center text-gray-600">

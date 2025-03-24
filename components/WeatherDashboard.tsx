@@ -3,6 +3,8 @@
 import { useWeather } from '@/hooks/useWeather'
 import WeatherCard from './WeatherCard'
 import { Location } from '@/shared/interfaces/weather.interface'
+import Loader from './Loader'
+import Error from './Error'
 
 const LOCATIONS: Location[] = [
     { city: 'Joinville', country: 'BR' },
@@ -13,9 +15,9 @@ const LOCATIONS: Location[] = [
 export default function WeatherDashboard() {
     const { data, error, isLoading } = useWeather(LOCATIONS)
 
-    if (error) return <div>Error</div>
+    if (error) return <Error />
 
-    if (isLoading) return <div>Loading</div>
+    if (isLoading) return <Loader />
 
     return (
         <div className="m-auto max-w-3xl grid md:grid-cols-2 gap-6">
