@@ -2,7 +2,6 @@ import { getColorByTemperature } from '@/hooks/useWeather'
 import { WeatherData } from '@/hooks/useWeather/weather.interface'
 import { format, formatDistanceToNow } from 'date-fns'
 import { Droplets, Gauge } from 'lucide-react'
-import Image from 'next/image'
 import { ReactNode } from 'react'
 
 interface WeatherCardProps {
@@ -33,7 +32,7 @@ export default function WeatherCard({ data }: WeatherCardProps) {
                         </h2>
                     </div>
                     <div>
-                        <Image
+                        <img
                             className="w-16 h-16"
                             src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
                             alt={description}
